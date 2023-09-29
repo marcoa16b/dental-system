@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto1_Citas_Dentales.Classes
 {
-    internal class Appointment
+    public class Appointment
     {
         // Fields
         private int _id;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto1_Citas_Dentales.Classes
 {
-    internal class Client
+    public class Client
     {
         private int _id;
         private string _name;

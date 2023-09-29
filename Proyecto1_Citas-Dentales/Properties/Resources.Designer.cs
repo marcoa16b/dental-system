@@ -59,5 +59,15 @@ namespace Proyecto1_Citas_Dentales.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap home_image {
+            get {
+                object obj = ResourceManager.GetObject("home image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

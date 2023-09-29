@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto1_Citas_Dentales.Classes
 {
-    internal class QueryType
+    public class QueryType
     {
         // Fields
         private int _id;

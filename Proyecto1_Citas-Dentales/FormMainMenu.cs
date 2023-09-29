@@ -1,3 +1,6 @@
+using Proyecto1_Citas_Dentales.Classes;
+using System.ComponentModel;
+
 namespace Proyecto1_Citas_Dentales
 {
     public partial class FormMainMenu : Form
@@ -6,6 +9,7 @@ namespace Proyecto1_Citas_Dentales
         // Fields
         private Button currentButton;
         private Form activeForm;
+        public static BindingList<QueryType> queryTypesList = new BindingList<QueryType>(); 
 
         public FormMainMenu()
         {
@@ -14,7 +18,6 @@ namespace Proyecto1_Citas_Dentales
 
         private void Form1_Load(object sender, EventArgs e)
         { }
-
         private void panel1_Paint(object sender, PaintEventArgs e)
         { }
 
@@ -50,6 +53,7 @@ namespace Proyecto1_Citas_Dentales
             }
         }
 
+        // open a child form
         private void OpenChildForm(Form childForm, object btnSender)
         {
             if (activeForm != null)
@@ -71,7 +75,7 @@ namespace Proyecto1_Citas_Dentales
         }
 
 
-
+        // handlers para los clicks en botones
         private void buttonNewDates_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormNewDates(), sender);
@@ -79,7 +83,7 @@ namespace Proyecto1_Citas_Dentales
 
         private void buttonNewQueryType_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.FormNewType(), sender);
+            OpenChildForm(new Forms.FormQueryTypes(), sender);
         }
 
         private void buttonAdmClients_Click(object sender, EventArgs e)

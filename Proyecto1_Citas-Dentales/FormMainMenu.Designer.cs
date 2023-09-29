@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainMenu));
             panelSideMenu = new Panel();
             buttonReportDoctor = new Button();
             buttonReportClient = new Button();
@@ -265,7 +264,7 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Image = Properties.Resources.home_image;
             pictureBox1.Location = new Point(134, 118);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(300, 211);
