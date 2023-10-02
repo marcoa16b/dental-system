@@ -96,11 +96,11 @@
             // 
             clientDataViewer.BackgroundColor = Color.FromArgb(25, 25, 50);
             clientDataViewer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            clientDataViewer.Dock = DockStyle.Fill;
+            clientDataViewer.Dock = DockStyle.Top;
             clientDataViewer.Location = new Point(0, 70);
             clientDataViewer.Name = "clientDataViewer";
             clientDataViewer.RowTemplate.Height = 25;
-            clientDataViewer.Size = new Size(800, 380);
+            clientDataViewer.Size = new Size(800, 287);
             clientDataViewer.TabIndex = 2;
             // 
             // FormAdminClients

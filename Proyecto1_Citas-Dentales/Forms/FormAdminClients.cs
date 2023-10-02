@@ -37,6 +37,5 @@ namespace Proyecto1_Citas_Dentales.Forms
         {
             bindingSource.ResetBindings(false);
         }
-
     }
 }

@@ -29,17 +29,19 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            buttonNewDoctor = new Button();
             button2 = new Button();
             button1 = new Button();
             label1 = new Label();
-            button3 = new Button();
+            doctorDataViewer = new DataGridView();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)doctorDataViewer).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(17, 17, 34);
-            panel1.Controls.Add(button3);
+            panel1.Controls.Add(buttonNewDoctor);
             panel1.Controls.Add(button2);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(label1);
@@ -48,6 +50,22 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 70);
             panel1.TabIndex = 2;
+            // 
+            // buttonNewDoctor
+            // 
+            buttonNewDoctor.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonNewDoctor.AutoSize = true;
+            buttonNewDoctor.BackColor = Color.FromArgb(25, 25, 50);
+            buttonNewDoctor.FlatStyle = FlatStyle.Flat;
+            buttonNewDoctor.ForeColor = Color.White;
+            buttonNewDoctor.Location = new Point(668, 18);
+            buttonNewDoctor.Name = "buttonNewDoctor";
+            buttonNewDoctor.Padding = new Padding(8, 4, 8, 4);
+            buttonNewDoctor.Size = new Size(110, 35);
+            buttonNewDoctor.TabIndex = 4;
+            buttonNewDoctor.Text = "Nuevo Doctor";
+            buttonNewDoctor.UseVisualStyleBackColor = false;
+            buttonNewDoctor.Click += buttonNewDoctor_Click;
             // 
             // button2
             // 
@@ -91,20 +109,16 @@
             label1.TabIndex = 1;
             label1.Text = "Doctores";
             // 
-            // button3
+            // doctorDataViewer
             // 
-            button3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            button3.AutoSize = true;
-            button3.BackColor = Color.FromArgb(25, 25, 50);
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.ForeColor = Color.White;
-            button3.Location = new Point(668, 18);
-            button3.Name = "button3";
-            button3.Padding = new Padding(8, 4, 8, 4);
-            button3.Size = new Size(110, 35);
-            button3.TabIndex = 4;
-            button3.Text = "Nuevo Doctor";
-            button3.UseVisualStyleBackColor = false;
+            doctorDataViewer.BackgroundColor = Color.FromArgb(25, 25, 50);
+            doctorDataViewer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            doctorDataViewer.Dock = DockStyle.Top;
+            doctorDataViewer.Location = new Point(0, 70);
+            doctorDataViewer.Name = "doctorDataViewer";
+            doctorDataViewer.RowTemplate.Height = 25;
+            doctorDataViewer.Size = new Size(800, 287);
+            doctorDataViewer.TabIndex = 3;
             // 
             // FormAdminDoctors
             // 
@@ -112,11 +126,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(25, 25, 50);
             ClientSize = new Size(800, 450);
+            Controls.Add(doctorDataViewer);
             Controls.Add(panel1);
             Name = "FormAdminDoctors";
             Text = "FormAdminDoctors";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)doctorDataViewer).EndInit();
             ResumeLayout(false);
         }
 
@@ -126,6 +142,7 @@
         private Button button2;
         private Button button1;
         private Label label1;
-        private Button button3;
+        private Button buttonNewDoctor;
+        private DataGridView doctorDataViewer;
     }
 }
