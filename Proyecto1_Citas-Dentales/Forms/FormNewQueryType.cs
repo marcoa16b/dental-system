@@ -14,7 +14,6 @@ namespace Proyecto1_Citas_Dentales.Forms
 {
     public partial class FormNewQueryType : Form
     {
-        //public event EventHandler DataUpdated;
 
         public FormNewQueryType()
         {

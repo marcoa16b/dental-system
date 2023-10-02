@@ -45,7 +45,7 @@ namespace Proyecto1_Citas_Dentales.Forms
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Verificar que se hizo clic en la tercera columna y que haya al menos una fila seleccionada
-            if (e.RowIndex >= 0 && e.ColumnIndex == 2) // Columna 2 representa la tercera columna
+            if (e.RowIndex >= 0 && e.ColumnIndex == 2) 
             {
                 // Obtener el valor de la primera columna (columna 0)
                 selectedId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);

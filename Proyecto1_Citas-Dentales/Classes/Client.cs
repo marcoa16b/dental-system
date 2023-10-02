@@ -13,10 +13,10 @@ namespace Proyecto1_Citas_Dentales.Classes
         private string _firstLastName;
         private string _secondLastName;
         private DateTime _birthDate;
-        private string _gender;
+        private char _gender;
 
         // Constructor
-        public Client(int id, string name, string firstLastName, string secondLastName, DateTime birthdate, string gender)
+        public Client(int id, string name, string firstLastName, string secondLastName, DateTime birthdate, char gender)
         {
             _id = id;
             _name = name;
@@ -24,7 +24,7 @@ namespace Proyecto1_Citas_Dentales.Classes
             _secondLastName = secondLastName;
             _birthDate = birthdate;
 
-            if (gender == "F" || gender == "M" || gender == "N")
+            if (gender == 'F' || gender == 'M' || gender == 'N')
             {
                 _gender = gender;
             }
@@ -56,12 +56,12 @@ namespace Proyecto1_Citas_Dentales.Classes
             get => _birthDate;
             set => _birthDate = value;
         }
-        public string Gender
+        public char Gender
         {
             get => _gender;
             set
             {
-                if (value == "F" || value == "M" || value == "N")
+                if (_gender == 'F' || _gender == 'M' || _gender == 'N')
                 {
                     _gender = value;
                 }

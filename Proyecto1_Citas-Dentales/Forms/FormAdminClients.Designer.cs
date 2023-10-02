@@ -30,9 +30,11 @@
         {
             button1 = new Button();
             panel1 = new Panel();
+            buttonNewClient = new Button();
             label1 = new Label();
-            button2 = new Button();
+            clientDataViewer = new DataGridView();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)clientDataViewer).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -53,7 +55,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(17, 17, 34);
-            panel1.Controls.Add(button2);
+            panel1.Controls.Add(buttonNewClient);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
@@ -61,6 +63,22 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 70);
             panel1.TabIndex = 1;
+            // 
+            // buttonNewClient
+            // 
+            buttonNewClient.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonNewClient.AutoSize = true;
+            buttonNewClient.BackColor = Color.FromArgb(25, 25, 50);
+            buttonNewClient.FlatStyle = FlatStyle.Flat;
+            buttonNewClient.ForeColor = Color.White;
+            buttonNewClient.Location = new Point(668, 17);
+            buttonNewClient.Name = "buttonNewClient";
+            buttonNewClient.Padding = new Padding(8, 4, 8, 4);
+            buttonNewClient.Size = new Size(110, 35);
+            buttonNewClient.TabIndex = 3;
+            buttonNewClient.Text = "Nuevo Cliente";
+            buttonNewClient.UseVisualStyleBackColor = false;
+            buttonNewClient.Click += buttonNewClient_Click;
             // 
             // label1
             // 
@@ -74,20 +92,16 @@
             label1.TabIndex = 1;
             label1.Text = "Clientes";
             // 
-            // button2
+            // clientDataViewer
             // 
-            button2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            button2.AutoSize = true;
-            button2.BackColor = Color.FromArgb(25, 25, 50);
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(668, 17);
-            button2.Name = "button2";
-            button2.Padding = new Padding(8, 4, 8, 4);
-            button2.Size = new Size(110, 35);
-            button2.TabIndex = 3;
-            button2.Text = "Nuevo Cliente";
-            button2.UseVisualStyleBackColor = false;
+            clientDataViewer.BackgroundColor = Color.FromArgb(25, 25, 50);
+            clientDataViewer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            clientDataViewer.Dock = DockStyle.Fill;
+            clientDataViewer.Location = new Point(0, 70);
+            clientDataViewer.Name = "clientDataViewer";
+            clientDataViewer.RowTemplate.Height = 25;
+            clientDataViewer.Size = new Size(800, 380);
+            clientDataViewer.TabIndex = 2;
             // 
             // FormAdminClients
             // 
@@ -95,11 +109,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(25, 25, 50);
             ClientSize = new Size(800, 450);
+            Controls.Add(clientDataViewer);
             Controls.Add(panel1);
             Name = "FormAdminClients";
             Text = "FormAdminClients";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)clientDataViewer).EndInit();
             ResumeLayout(false);
         }
 
@@ -108,6 +124,7 @@
         private Button button1;
         private Panel panel1;
         private Label label1;
-        private Button button2;
+        private Button buttonNewClient;
+        private DataGridView clientDataViewer;
     }
 }
