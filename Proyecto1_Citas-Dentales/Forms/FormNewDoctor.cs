@@ -38,7 +38,14 @@ namespace Proyecto1_Citas_Dentales.Forms
                 string secondLastName = inputSecondLastName.Text;
                 char state = inputState.Text[0];
                 Doctor doctor = new Doctor(id, name, firstLastName, secondLastName, state);
-                HandleLists.DoctorsList.Add(doctor);
+                for (int i = 0; i < HandleLists.DoctorsArray.Length; i++)
+                {
+                    if (HandleLists.DoctorsArray[i] == null)
+                    {
+                        HandleLists.DoctorsArray[i] = doctor;
+                        break;
+                    }
+                }
 
                 if (Owner is FormAdminDoctors formDoctors)
                 {
@@ -63,9 +70,9 @@ namespace Proyecto1_Citas_Dentales.Forms
 
         public bool IsDoctorInList(int id)
         {
-            foreach (Doctor doctor in HandleLists.DoctorsList)
+            foreach (Doctor doctor in HandleLists.DoctorsArray)
             {
-                if (doctor.Id == id)
+                if (doctor != null && doctor.Id == id)
                 {
                     return true;
                 }

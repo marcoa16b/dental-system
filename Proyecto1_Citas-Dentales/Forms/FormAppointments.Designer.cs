@@ -1,6 +1,6 @@
 ﻿namespace Proyecto1_Citas_Dentales.Forms
 {
-    partial class FormNewDates
+    partial class FormAppointments
     {
         /// <summary>
         /// Required designer variable.
@@ -59,6 +59,7 @@
             button1.TabIndex = 1;
             button1.Text = "Nueva Cita";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += handleNewAppoiment;
             // 
             // label1
             // 
@@ -72,14 +73,14 @@
             label1.TabIndex = 0;
             label1.Text = "Citas";
             // 
-            // FormNewDates
+            // FormAppointments
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(25, 25, 50);
             ClientSize = new Size(800, 450);
             Controls.Add(panel1);
-            Name = "FormNewDates";
+            Name = "FormAppointments";
             Text = "FormNewDates";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

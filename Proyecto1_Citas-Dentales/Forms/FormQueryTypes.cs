@@ -21,15 +21,26 @@ namespace Proyecto1_Citas_Dentales.Forms
         {
             InitializeComponent();
 
-            // Asignar la lista de QueryTypes al BindingSource
-            bindingSource.DataSource = HandleLists.QueryTypesList;
+            DataGridViewTextBoxColumn columnId = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn columnDescription = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn columnState = new DataGridViewTextBoxColumn();
 
-            // Vincular el DataGridView al BindingSource
-            dataGridView1.DataSource = bindingSource;
+            columnId.HeaderText = "ID";
+            columnDescription.HeaderText = "Descripción";
+            columnState.HeaderText = "Estado";
+
+            dataGridView1.Columns.Add(columnId);
+            dataGridView1.Columns.Add(columnDescription);
+            dataGridView1.Columns.Add(columnState);
         }
 
         private void ButtonAddQueryType_Click(object sender, EventArgs e)
         {
+            if (HandleLists.QueryTypesArray[9] == null)
+            {
+                MessageBox.Show("No se pueden agregar mas tipos de consulta", "Nuevo tipo de consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             FormNewQueryType formNewQueryType = new FormNewQueryType();
             formNewQueryType.Owner = this;
             formNewQueryType.ShowDialog();
@@ -38,7 +49,22 @@ namespace Proyecto1_Citas_Dentales.Forms
 
         public void UpdateData()
         {
-            bindingSource.ResetBindings(false);
+            dataGridView1.Rows.Clear();
+
+            foreach (QueryType queryType in HandleLists.QueryTypesArray)
+            {
+                if (queryType != null)
+                {
+                    // Agrega una nueva fila al DataGridView con los datos de cada QueryType
+                    string state = queryType.State == 'A' ? "Activo" : "Inactivo";
+                    string id = queryType.Id.ToString();
+                    string description = queryType.Description;
+                    
+                    string[] row = { id, description, state };
+
+                    dataGridView1.Rows.Add(row);
+                }
+            }
         }
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)

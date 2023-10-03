@@ -78,7 +78,7 @@ namespace Proyecto1_Citas_Dentales
         // handlers para los clicks en botones
         private void buttonNewDates_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.FormNewDates(), sender);
+            OpenChildForm(new Forms.FormAppointments(), sender);
         }
 
         private void buttonNewQueryType_Click(object sender, EventArgs e)

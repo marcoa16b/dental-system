@@ -39,7 +39,17 @@ namespace Proyecto1_Citas_Dentales.Forms
                 DateTime date = inputBirthday.Value.Date; // Fecha de nacimiento sin el tiempo
                 char gender = inputGender.Text[0];
                 Client client = new Client(id, name, firstLastName, secondLastName, date, gender);
-                HandleLists.ClientsList.Add(client);
+
+                for (int i = 0; i < HandleLists.ClientsArray.Length; i++)
+                {
+                    if (HandleLists.ClientsArray[i] == null)
+                    {
+                        HandleLists.ClientsArray[i] = client;
+                        break;
+                    }
+                }
+
+                //HandleLists.ClientsList.Add(client);
 
                 if (Owner is FormAdminClients formClients)
                 {
@@ -70,9 +80,9 @@ namespace Proyecto1_Citas_Dentales.Forms
 
         public bool IsClientInList(int id)
         {
-            foreach (Client client in HandleLists.ClientsList)
+            foreach (Client client in HandleLists.ClientsArray)
             {
-                if (client.Id == id)
+                if (client != null && client.Id == id)
                 {
                     return true;
                 }

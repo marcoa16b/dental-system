@@ -23,34 +23,39 @@ namespace Proyecto1_Citas_Dentales.Forms
         {
             if (idQueryType.Value != 0 && descriptionQueryType.Text != "" && stateQueryType.Text != "")
             {
-                List<QueryType> queryTypes = HandleLists.QueryTypesList;
-                if (queryTypes.Count == 10)
-                {
-                    MessageBox.Show("No se pueden agregar mas tipos de consulta", "Nuevo tipo de consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
                 bool exists = false;
-                queryTypes.ForEach(value =>
+                for (int i = 0; i < HandleLists.QueryTypesArray.Length; i++)
                 {
-                    if (value.Id == (int)idQueryType.Value)
+                    QueryType qt = HandleLists.QueryTypesArray[i];
+                    if (qt != null && qt.Id == (int)idQueryType.Value)
                     {
                         MessageBox.Show("El ID de consulta ya existe.", "Nuevo tipo de consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         exists = true;
                         return;
                     }
-                });
+                }
                 if (exists)
                 {
                     return;
                 }
-                queryTypes.Add(new QueryType((int)idQueryType.Value, descriptionQueryType.Text, stateQueryType.Text[0]));
-
-                // MessageBox.Show("Se ha agregado el nuevo tipo de consulta", "Nuevo tipo de consulta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Actualizar el DataGridView en FormQueryTypes
+                for (int i = 0; i < HandleLists.QueryTypesArray.Length; i++)
+                {
+                    if (HandleLists.QueryTypesArray[i] == null)
+                    {
+                        HandleLists.QueryTypesArray[i] = new QueryType((int)idQueryType.Value, descriptionQueryType.Text, stateQueryType.Text[0]);
+                        break;
+                    }
+                }
                 if (Owner is FormQueryTypes formQueryTypes)
                 {
                     formQueryTypes.UpdateData();
+                }
+                if (MessageBox.Show("Se ha agregado el nuevo tipo de consulta. ¿Desea agregar otro?", "Nuevo tipo de consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    idQueryType.Value = 0;
+                    descriptionQueryType.Text = "";
+                    stateQueryType.Text = "";
+                    return;
                 }
 
                 this.Close();

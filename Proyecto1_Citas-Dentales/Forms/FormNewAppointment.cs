@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto1_Citas_Dentales.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +11,10 @@ using System.Windows.Forms;
 
 namespace Proyecto1_Citas_Dentales.Forms
 {
-    public partial class FormNewDates : Form
+    public partial class FormNewAppointment : Form
     {
-        public FormNewDates()
+
+        public FormNewAppointment()
         {
             InitializeComponent();
         }
