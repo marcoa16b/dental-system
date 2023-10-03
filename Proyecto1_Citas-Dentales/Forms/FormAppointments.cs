@@ -20,17 +20,44 @@ namespace Proyecto1_Citas_Dentales.Forms
 
         private void handleNewAppoiment(object sender, EventArgs e)
         {
-            if (HandleLists.ClientsList.Count == 0)
+            bool foundClient = false;
+            bool foundDoctor = false;
+            bool foundQueryType = false;
+            foreach (Client client in HandleLists.ClientsArray)
+            {
+                if (client != null)
+                {
+                    foundClient = true;
+                    break;
+                }
+            }
+            foreach (Doctor doctor in HandleLists.DoctorsArray)
+            {
+                if (doctor != null && doctor.State == 'A')
+                {
+                    foundDoctor = true;
+                    break;
+                }
+            }
+            foreach (QueryType queryType in HandleLists.QueryTypesArray)
+            {
+                if (queryType != null && queryType.State == 'A')
+                {
+                    foundQueryType = true;
+                    break;
+                }
+            }
+            if (!foundClient)
             {
                 MessageBox.Show("No hay clientes registrados");
                 return;
             }
-            if (HandleLists.DoctorsList.Count == 0)
+            if (!foundDoctor)
             {
                 MessageBox.Show("No hay doctores registrados");
                 return;
             }
-            if (HandleLists.QueryTypesList.Count == 0)
+            if (!foundQueryType)
             {
                 MessageBox.Show("No hay tipos de consulta registrados");
                 return;

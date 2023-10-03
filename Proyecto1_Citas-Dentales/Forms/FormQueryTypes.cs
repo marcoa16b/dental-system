@@ -32,11 +32,13 @@ namespace Proyecto1_Citas_Dentales.Forms
             dataGridView1.Columns.Add(columnId);
             dataGridView1.Columns.Add(columnDescription);
             dataGridView1.Columns.Add(columnState);
+
+            UpdateData();
         }
 
         private void ButtonAddQueryType_Click(object sender, EventArgs e)
         {
-            if (HandleLists.QueryTypesArray[9] == null)
+            if (HandleLists.QueryTypesArray[9] != null)
             {
                 MessageBox.Show("No se pueden agregar mas tipos de consulta", "Nuevo tipo de consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -87,24 +89,22 @@ namespace Proyecto1_Citas_Dentales.Forms
         {
             if (selectedId != 0)
             {
-                List<QueryType> queryTypes = HandleLists.QueryTypesList;
-                queryTypes.ForEach(value =>
+                for (int i = 0; i < HandleLists.QueryTypesArray.Length; i++)
                 {
-                    if (value.Id == selectedId)
+                    if (HandleLists.QueryTypesArray[i] != null && HandleLists.QueryTypesArray[i].Id == selectedId)
                     {
-                        if (value.State == 'I')
+                        if (HandleLists.QueryTypesArray[i].State == 'I')
                         {
-                            value.State = 'A';
+                            HandleLists.QueryTypesArray[i].State = 'A';
                         }
                         else
                         {
-                            value.State = 'I';
+                            HandleLists.QueryTypesArray[i].State = 'I';
                         }
-                        selectedId = 0;
-                        UpdateData();
-                        return;
                     }
-                });
+                }
+                UpdateData();
+                selectedId = 0;
             }
             else
             {

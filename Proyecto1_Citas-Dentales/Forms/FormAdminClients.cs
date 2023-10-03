@@ -40,6 +40,8 @@ namespace Proyecto1_Citas_Dentales.Forms
             clientDataViewer.Columns.Add(columnSLName);
             clientDataViewer.Columns.Add(columnBirthday);
             clientDataViewer.Columns.Add(columnGender);
+
+            UpdateData();
         }
 
         private void buttonNewClient_Click(object sender, EventArgs e)

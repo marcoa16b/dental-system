@@ -42,7 +42,11 @@ namespace Proyecto1_Citas_Dentales.Forms
                 {
                     if (HandleLists.QueryTypesArray[i] == null)
                     {
-                        HandleLists.QueryTypesArray[i] = new QueryType((int)idQueryType.Value, descriptionQueryType.Text, stateQueryType.Text[0]);
+                        int id = (int)idQueryType.Value;
+                        string description = descriptionQueryType.Text;
+                        char stateQt = stateQueryType.Text[0];
+
+                        HandleLists.QueryTypesArray[i] = new QueryType(id, description, stateQt);
                         break;
                     }
                 }

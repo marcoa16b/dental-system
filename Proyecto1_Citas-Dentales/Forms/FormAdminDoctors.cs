@@ -36,6 +36,8 @@ namespace Proyecto1_Citas_Dentales.Forms
             doctorDataViewer.Columns.Add(columnFLName);
             doctorDataViewer.Columns.Add(columnSLName);
             doctorDataViewer.Columns.Add(columnState);
+
+            UpdateData();
         }
 
         public void UpdateData()
