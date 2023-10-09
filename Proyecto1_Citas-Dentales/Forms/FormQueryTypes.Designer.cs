@@ -1,4 +1,4 @@
-﻿using Proyecto1_Citas_Dentales.Classes;
+﻿// using Proyecto1_Citas_Dentales.Classes;
 
 namespace Proyecto1_Citas_Dentales.Forms
 {
@@ -34,8 +34,9 @@ namespace Proyecto1_Citas_Dentales.Forms
             ButtonAddQueryType = new Button();
             labelHeader = new Label();
             panelList = new Panel();
-            dataGridView1 = new DataGridView();
+            button2 = new Button();
             button1 = new Button();
+            dataGridView1 = new DataGridView();
             panelHeader.SuspendLayout();
             panelList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -82,14 +83,45 @@ namespace Proyecto1_Citas_Dentales.Forms
             // 
             // panelList
             // 
+            panelList.Controls.Add(button2);
             panelList.Controls.Add(button1);
             panelList.Controls.Add(dataGridView1);
-            panelList.Dock = DockStyle.Top;
+            panelList.Dock = DockStyle.Fill;
             panelList.Location = new Point(0, 70);
             panelList.Name = "panelList";
             panelList.Padding = new Padding(8, 18, 8, 8);
-            panelList.Size = new Size(800, 362);
+            panelList.Size = new Size(800, 380);
             panelList.TabIndex = 3;
+            // 
+            // button2
+            // 
+            button2.AutoSize = true;
+            button2.BackColor = Color.FromArgb(192, 0, 0);
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(142, 334);
+            button2.Name = "button2";
+            button2.Padding = new Padding(8, 4, 8, 4);
+            button2.Size = new Size(166, 35);
+            button2.TabIndex = 2;
+            button2.Text = "Eliminar tipo de consulta";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += DeleteQueryType;
+            // 
+            // button1
+            // 
+            button1.AutoSize = true;
+            button1.BackColor = Color.FromArgb(17, 17, 34);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(8, 334);
+            button1.Name = "button1";
+            button1.Padding = new Padding(8, 4, 8, 4);
+            button1.Size = new Size(118, 35);
+            button1.TabIndex = 1;
+            button1.Text = "Cambiar estado";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += ChangeState;
             // 
             // dataGridView1
             // 
@@ -97,6 +129,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             dataGridView1.BackgroundColor = Color.FromArgb(25, 25, 50);
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Dock = DockStyle.Top;
             dataGridView1.Location = new Point(8, 18);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
@@ -104,22 +137,6 @@ namespace Proyecto1_Citas_Dentales.Forms
             dataGridView1.Size = new Size(784, 304);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellClick += dataGridView_CellClick;
-            // 
-            // button1
-            // 
-            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            button1.AutoSize = true;
-            button1.BackColor = Color.FromArgb(17, 17, 34);
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(8, 328);
-            button1.Name = "button1";
-            button1.Size = new Size(102, 27);
-            button1.TabIndex = 1;
-            button1.Text = "Cambiar estado";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
             // 
             // FormQueryTypes
             // 
@@ -150,5 +167,6 @@ namespace Proyecto1_Citas_Dentales.Forms
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
         private Button button1;
+        private Button button2;
     }
 }

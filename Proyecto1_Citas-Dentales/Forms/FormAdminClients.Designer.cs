@@ -33,6 +33,8 @@
             buttonNewClient = new Button();
             label1 = new Label();
             clientDataViewer = new DataGridView();
+            buttonDeleteClient = new Button();
+            buttonEditClient = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)clientDataViewer).BeginInit();
             SuspendLayout();
@@ -100,8 +102,39 @@
             clientDataViewer.Location = new Point(0, 70);
             clientDataViewer.Name = "clientDataViewer";
             clientDataViewer.RowTemplate.Height = 25;
-            clientDataViewer.Size = new Size(800, 287);
+            clientDataViewer.Size = new Size(800, 327);
             clientDataViewer.TabIndex = 2;
+            clientDataViewer.CellClick += HandleSelectId;
+            // 
+            // buttonDeleteClient
+            // 
+            buttonDeleteClient.AutoSize = true;
+            buttonDeleteClient.BackColor = Color.FromArgb(192, 0, 0);
+            buttonDeleteClient.FlatStyle = FlatStyle.Flat;
+            buttonDeleteClient.ForeColor = Color.White;
+            buttonDeleteClient.Location = new Point(146, 406);
+            buttonDeleteClient.Name = "buttonDeleteClient";
+            buttonDeleteClient.Padding = new Padding(8, 4, 8, 4);
+            buttonDeleteClient.Size = new Size(125, 35);
+            buttonDeleteClient.TabIndex = 4;
+            buttonDeleteClient.Text = "Eliminar cliente";
+            buttonDeleteClient.UseVisualStyleBackColor = false;
+            buttonDeleteClient.Click += buttonDeleteClient_Click;
+            // 
+            // buttonEditClient
+            // 
+            buttonEditClient.AutoSize = true;
+            buttonEditClient.BackColor = Color.FromArgb(17, 17, 34);
+            buttonEditClient.FlatStyle = FlatStyle.Flat;
+            buttonEditClient.ForeColor = Color.White;
+            buttonEditClient.Location = new Point(12, 406);
+            buttonEditClient.Name = "buttonEditClient";
+            buttonEditClient.Padding = new Padding(8, 4, 8, 4);
+            buttonEditClient.Size = new Size(118, 35);
+            buttonEditClient.TabIndex = 3;
+            buttonEditClient.Text = "Modificar datos";
+            buttonEditClient.UseVisualStyleBackColor = false;
+            buttonEditClient.Click += buttonEditClient_Click;
             // 
             // FormAdminClients
             // 
@@ -109,6 +142,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(25, 25, 50);
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonDeleteClient);
+            Controls.Add(buttonEditClient);
             Controls.Add(clientDataViewer);
             Controls.Add(panel1);
             Name = "FormAdminClients";
@@ -117,6 +152,7 @@
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)clientDataViewer).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -126,5 +162,7 @@
         private Label label1;
         private Button buttonNewClient;
         private DataGridView clientDataViewer;
+        private Button buttonDeleteClient;
+        private Button buttonEditClient;
     }
 }

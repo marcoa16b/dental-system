@@ -114,7 +114,6 @@
             inputClient.Name = "inputClient";
             inputClient.Size = new Size(355, 25);
             inputClient.TabIndex = 9;
-            inputClient.Text = "Seleccione un cliente";
             // 
             // label6
             // 
@@ -141,7 +140,6 @@
             inputDoctor.Name = "inputDoctor";
             inputDoctor.Size = new Size(355, 25);
             inputDoctor.TabIndex = 7;
-            inputDoctor.Text = "Seleccione un doctor";
             // 
             // label5
             // 
@@ -168,7 +166,6 @@
             inputType.Name = "inputType";
             inputType.Size = new Size(355, 25);
             inputType.TabIndex = 5;
-            inputType.Text = "Seleccione un tipo de cita";
             // 
             // label4
             // 
@@ -190,16 +187,16 @@
             inputDate.CalendarTitleBackColor = Color.DimGray;
             inputDate.CalendarTitleForeColor = Color.White;
             inputDate.CalendarTrailingForeColor = Color.Silver;
-            inputDate.CustomFormat = "dd/mm/yyyy";
+            inputDate.CustomFormat = "dd/MM/yyyy HH:mm";
             inputDate.Dock = DockStyle.Top;
             inputDate.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            inputDate.Format = DateTimePickerFormat.Custom;
             inputDate.Location = new Point(0, 87);
-            inputDate.MaxDate = new DateTime(2023, 9, 29, 0, 0, 0, 0);
-            inputDate.MinDate = new DateTime(1960, 1, 1, 0, 0, 0, 0);
+            inputDate.MaxDate = new DateTime(2025, 9, 29, 0, 0, 0, 0);
+            inputDate.MinDate = new DateTime(2023, 1, 1, 0, 0, 0, 0);
             inputDate.Name = "inputDate";
             inputDate.Size = new Size(355, 25);
             inputDate.TabIndex = 3;
-            inputDate.Value = new DateTime(2023, 9, 29, 0, 0, 0, 0);
             // 
             // label3
             // 
@@ -220,6 +217,7 @@
             inputID.BorderStyle = BorderStyle.FixedSingle;
             inputID.Dock = DockStyle.Top;
             inputID.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            inputID.ForeColor = Color.White;
             inputID.Location = new Point(0, 29);
             inputID.Name = "inputID";
             inputID.Size = new Size(355, 25);
@@ -252,6 +250,7 @@
             buttonSaveAppointment.TabIndex = 5;
             buttonSaveAppointment.Text = "Crear cita";
             buttonSaveAppointment.UseVisualStyleBackColor = true;
+            buttonSaveAppointment.Click += buttonSaveAppointment_Click;
             // 
             // FormNewAppointment
             // 

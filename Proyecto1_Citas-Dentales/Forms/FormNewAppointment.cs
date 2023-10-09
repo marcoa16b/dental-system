@@ -1,4 +1,6 @@
-﻿using Proyecto1_Citas_Dentales.Classes;
+﻿// using Proyecto1_Citas_Dentales.Classes;
+using BusinessLogic;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,28 +20,25 @@ namespace Proyecto1_Citas_Dentales.Forms
         {
             InitializeComponent();
 
-            // string[] queryTypesInfo = getQueryTypes();
-
-            foreach (QueryType qt in HandleLists.QueryTypesArray)
+            foreach (QueryType qt in Business.queryTypes)
             {
-                if (qt != null)
+                if (qt != null && qt.State == 'A')
                 {
                     string id = qt.Id.ToString();
                     string description = qt.Description;
-                    string state = qt.State == 'A' ? "Activo" : "Inactivo";
 
-                    string info = id + " - " + description + " - " + state;
+                    string info = id + " - " + description;
                     inputType.Items.Add(info);
                 }
             }
 
-            foreach (Client client in HandleLists.ClientsArray)
+            foreach (Client client in Business.clients)
             {
                 if (client != null)
                 {
                     string id = client.Id.ToString();
                     string name = client.Name;
-                    string firstLastName = client.FirstLastName;
+                    string firstLastName = client.LastName;
                     string secondLastName = client.SecondLastName;
 
                     string info = id + " - " + name + " " + firstLastName + " " + secondLastName;
@@ -47,13 +46,13 @@ namespace Proyecto1_Citas_Dentales.Forms
                 }
             }
 
-            foreach (Doctor doctor in HandleLists.DoctorsArray)
+            foreach (Doctor doctor in Business.doctors)
             {
                 if (doctor != null && doctor.State == 'A')
                 {
                     string id = doctor.Id.ToString();
                     string name = doctor.Name;
-                    string firstLastName = doctor.FirstLastName;
+                    string firstLastName = doctor.LastName;
                     string secondLastName = doctor.SecondLastName;
 
                     string info = id + " - " + name + " " + firstLastName + " " + secondLastName;
@@ -61,6 +60,24 @@ namespace Proyecto1_Citas_Dentales.Forms
                 }
             }
 
+        }
+
+        private void buttonSaveAppointment_Click(object sender, EventArgs e)
+        {
+            Response response = Business.SaveAppointment(inputID.Text, inputDate.Value, inputType.Text, inputClient.Text, inputDoctor.Text);
+
+            if (response.Success)
+            {
+                if (Owner is FormAppointments formAppointments)
+                {
+                    formAppointments.UpdateData();
+                }
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show(response.Message, "Nueva cita", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

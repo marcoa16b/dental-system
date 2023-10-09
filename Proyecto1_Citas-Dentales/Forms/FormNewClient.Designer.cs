@@ -130,6 +130,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             // 
             inputSecondLastName.BackColor = Color.FromArgb(17, 17, 34);
             inputSecondLastName.BorderStyle = BorderStyle.FixedSingle;
+            inputSecondLastName.Cursor = Cursors.IBeam;
             inputSecondLastName.Dock = DockStyle.Top;
             inputSecondLastName.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             inputSecondLastName.ForeColor = Color.White;
@@ -155,6 +156,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             // 
             inputFirstLastName.BackColor = Color.FromArgb(17, 17, 34);
             inputFirstLastName.BorderStyle = BorderStyle.FixedSingle;
+            inputFirstLastName.Cursor = Cursors.IBeam;
             inputFirstLastName.Dock = DockStyle.Top;
             inputFirstLastName.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             inputFirstLastName.ForeColor = Color.White;
@@ -180,6 +182,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             // 
             inputName.BackColor = Color.FromArgb(17, 17, 34);
             inputName.BorderStyle = BorderStyle.FixedSingle;
+            inputName.Cursor = Cursors.IBeam;
             inputName.Dock = DockStyle.Top;
             inputName.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             inputName.ForeColor = Color.White;
@@ -205,6 +208,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             // 
             inputId.BackColor = Color.FromArgb(17, 17, 34);
             inputId.BorderStyle = BorderStyle.FixedSingle;
+            inputId.Cursor = Cursors.IBeam;
             inputId.Dock = DockStyle.Top;
             inputId.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             inputId.ForeColor = Color.White;
@@ -225,7 +229,6 @@ namespace Proyecto1_Citas_Dentales.Forms
             label2.Size = new Size(186, 25);
             label2.TabIndex = 0;
             label2.Text = "Identificación del usuario:";
-            label2.Click += label2_Click;
             // 
             // panel3
             // 
@@ -245,6 +248,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             // buttonSaveClient
             // 
             buttonSaveClient.AutoSize = true;
+            buttonSaveClient.Cursor = Cursors.Hand;
             buttonSaveClient.Dock = DockStyle.Bottom;
             buttonSaveClient.FlatAppearance.BorderColor = Color.DimGray;
             buttonSaveClient.FlatStyle = FlatStyle.Flat;
@@ -261,17 +265,18 @@ namespace Proyecto1_Citas_Dentales.Forms
             // inputGender
             // 
             inputGender.BackColor = Color.FromArgb(17, 17, 34);
+            inputGender.Cursor = Cursors.IBeam;
             inputGender.Dock = DockStyle.Top;
             inputGender.FlatStyle = FlatStyle.Flat;
             inputGender.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             inputGender.ForeColor = Color.White;
             inputGender.FormattingEnabled = true;
-            inputGender.Items.AddRange(new object[] { "N - No especificado", "F - Femenino", "M - Masculino" });
+            inputGender.Items.AddRange(new object[] { "No especificado", "Femenino", "Masculino" });
             inputGender.Location = new Point(10, 95);
             inputGender.Name = "inputGender";
             inputGender.Size = new Size(273, 25);
             inputGender.TabIndex = 3;
-            inputGender.Text = "N - No especificado";
+            inputGender.Text = "No especificado";
             // 
             // label6
             // 
@@ -293,6 +298,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             inputBirthday.CalendarTitleBackColor = Color.DimGray;
             inputBirthday.CalendarTitleForeColor = Color.White;
             inputBirthday.CalendarTrailingForeColor = Color.Silver;
+            inputBirthday.Cursor = Cursors.IBeam;
             inputBirthday.CustomFormat = "dd/mm/yyyy";
             inputBirthday.Dock = DockStyle.Top;
             inputBirthday.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);

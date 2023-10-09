@@ -1,4 +1,4 @@
-using Proyecto1_Citas_Dentales.Classes;
+//using Proyecto1_Citas_Dentales.Classes;
 using System.ComponentModel;
 
 namespace Proyecto1_Citas_Dentales
@@ -9,7 +9,6 @@ namespace Proyecto1_Citas_Dentales
         // Fields
         private Button currentButton;
         private Form activeForm;
-        public static BindingList<QueryType> queryTypesList = new BindingList<QueryType>(); 
 
         public FormMainMenu()
         {
@@ -109,6 +108,14 @@ namespace Proyecto1_Citas_Dentales
         private void buttonReportDoctor_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormReportDoctor(), sender);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            if (activeForm != null)
+            {
+                activeForm.Close();
+            }
         }
     }
 }

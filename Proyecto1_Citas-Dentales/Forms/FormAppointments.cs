@@ -1,4 +1,6 @@
-﻿using Proyecto1_Citas_Dentales.Classes;
+﻿// using Proyecto1_Citas_Dentales.Classes;
+using Entities;
+using BusinessLogic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,17 +15,69 @@ namespace Proyecto1_Citas_Dentales.Forms
 {
     public partial class FormAppointments : Form
     {
+        private int selectedId;
+
         public FormAppointments()
         {
             InitializeComponent();
+
+            DataGridViewTextBoxColumn columnId = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn columnDate = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn columnType = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn columnDoctor = new DataGridViewTextBoxColumn();
+            DataGridViewTextBoxColumn columnClient = new DataGridViewTextBoxColumn();
+
+            columnId.HeaderText = "ID";
+            columnDate.HeaderText = "Fecha";
+            columnType.HeaderText = "Tipo";
+            columnDoctor.HeaderText = "Doctor";
+            columnClient.HeaderText = "Cliente";
+
+            appointmentsView.Columns.Add(columnId);
+            appointmentsView.Columns.Add(columnDate);
+            appointmentsView.Columns.Add(columnType);
+            appointmentsView.Columns.Add(columnDoctor);
+            appointmentsView.Columns.Add(columnClient);
+
+            UpdateData();
         }
 
-        private void handleNewAppoiment(object sender, EventArgs e)
+        public void UpdateData()
         {
+            appointmentsView.Rows.Clear();
+
+            foreach (Appointment appointment in Business.appointments)
+            {
+                if (appointment != null)
+                {
+                    // Agrega una nueva fila al DataGridView con los datos de cada Doctor
+                    string id = appointment.Id.ToString();
+                    string date = appointment.Date.ToString();
+
+                    QueryType qt = appointment.QueryType;
+                    Client client = appointment.Client;
+                    Doctor doctor = appointment.Doctor;
+
+                    string type = qt != null ? qt.Id.ToString() + " - " + qt.Description : "N/A";
+                    string doctorName = doctor != null ? doctor.Id.ToString() + " - " + doctor.Name + " " + doctor.LastName : "N/A";
+                    string clientName = client != null ? client.Id.ToString() + " - " + client.Name + " " + client.LastName : "N/A";
+
+                    string[] row = { id, date, type, doctorName, clientName };
+
+                    appointmentsView.Rows.Add(row);
+                }
+            }
+        }
+
+        private void HandleNewAppoiment(object sender, EventArgs e)
+        {
+            // Variables para saber si existe el cliente, doctor y tipo de consulta
             bool foundClient = false;
             bool foundDoctor = false;
             bool foundQueryType = false;
-            foreach (Client client in HandleLists.ClientsArray)
+
+            // Verificar si existen clientes, doctores y tipos de consulta
+            foreach (Client client in Business.clients)
             {
                 if (client != null)
                 {
@@ -31,7 +85,7 @@ namespace Proyecto1_Citas_Dentales.Forms
                     break;
                 }
             }
-            foreach (Doctor doctor in HandleLists.DoctorsArray)
+            foreach (Doctor doctor in Business.doctors)
             {
                 if (doctor != null && doctor.State == 'A')
                 {
@@ -39,7 +93,7 @@ namespace Proyecto1_Citas_Dentales.Forms
                     break;
                 }
             }
-            foreach (QueryType queryType in HandleLists.QueryTypesArray)
+            foreach (QueryType queryType in Business.queryTypes)
             {
                 if (queryType != null && queryType.State == 'A')
                 {
@@ -62,9 +116,40 @@ namespace Proyecto1_Citas_Dentales.Forms
                 MessageBox.Show("No hay tipos de consulta registrados");
                 return;
             }
+
+            // Abrir formulario para crear una nueva cita
             FormNewAppointment formNewAppointment = new FormNewAppointment();
             formNewAppointment.Owner = this;
             formNewAppointment.ShowDialog();
+        }
+
+        private void HandleClickCell(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                selectedId = Convert.ToInt32(appointmentsView.Rows[e.RowIndex].Cells[0].Value);
+            }
+            else
+            {
+                selectedId = 0;
+            }
+        }
+
+        private void DeleteAppointment(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Está seguro que desea eliminar la cita?", "Eliminar cita", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Response response = Business.DeleteAppointment(selectedId);
+
+                if (response.Success)
+                {
+                    UpdateData();
+                }
+                else
+                {
+                    MessageBox.Show(response.Message, "Eliminar cita", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

@@ -74,6 +74,7 @@
             // 
             // buttonReportDoctor
             // 
+            buttonReportDoctor.Cursor = Cursors.Hand;
             buttonReportDoctor.Dock = DockStyle.Top;
             buttonReportDoctor.FlatAppearance.BorderSize = 0;
             buttonReportDoctor.FlatStyle = FlatStyle.Flat;
@@ -91,6 +92,7 @@
             // 
             // buttonReportClient
             // 
+            buttonReportClient.Cursor = Cursors.Hand;
             buttonReportClient.Dock = DockStyle.Top;
             buttonReportClient.FlatAppearance.BorderSize = 0;
             buttonReportClient.FlatStyle = FlatStyle.Flat;
@@ -108,6 +110,7 @@
             // 
             // buttonReportDate
             // 
+            buttonReportDate.Cursor = Cursors.Hand;
             buttonReportDate.Dock = DockStyle.Top;
             buttonReportDate.FlatAppearance.BorderSize = 0;
             buttonReportDate.FlatStyle = FlatStyle.Flat;
@@ -138,6 +141,7 @@
             // 
             // buttonAdmDoctors
             // 
+            buttonAdmDoctors.Cursor = Cursors.Hand;
             buttonAdmDoctors.Dock = DockStyle.Top;
             buttonAdmDoctors.FlatAppearance.BorderSize = 0;
             buttonAdmDoctors.FlatStyle = FlatStyle.Flat;
@@ -155,6 +159,7 @@
             // 
             // buttonAdmClients
             // 
+            buttonAdmClients.Cursor = Cursors.Hand;
             buttonAdmClients.Dock = DockStyle.Top;
             buttonAdmClients.FlatAppearance.BorderSize = 0;
             buttonAdmClients.FlatStyle = FlatStyle.Flat;
@@ -185,6 +190,7 @@
             // 
             // buttonNewQueryType
             // 
+            buttonNewQueryType.Cursor = Cursors.Hand;
             buttonNewQueryType.Dock = DockStyle.Top;
             buttonNewQueryType.FlatAppearance.BorderSize = 0;
             buttonNewQueryType.FlatStyle = FlatStyle.Flat;
@@ -202,6 +208,7 @@
             // 
             // buttonNewDates
             // 
+            buttonNewDates.Cursor = Cursors.Hand;
             buttonNewDates.Dock = DockStyle.Top;
             buttonNewDates.FlatAppearance.BorderSize = 0;
             buttonNewDates.FlatStyle = FlatStyle.Flat;
@@ -243,6 +250,7 @@
             // 
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
+            label1.Cursor = Cursors.Hand;
             label1.Font = new Font("Droid Sans Mono Dotted for Powe", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ControlLight;
             label1.Location = new Point(73, 22);
@@ -250,6 +258,7 @@
             label1.Size = new Size(66, 24);
             label1.TabIndex = 0;
             label1.Text = "MENU";
+            label1.Click += label1_Click;
             // 
             // panelDesktopPanel
             // 

@@ -1,4 +1,6 @@
-﻿using Proyecto1_Citas_Dentales.Classes;
+﻿using BusinessLogic;
+using Entities;
+// using Proyecto1_Citas_Dentales.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,8 +15,6 @@ namespace Proyecto1_Citas_Dentales.Forms
 {
     public partial class FormQueryTypes : Form
     {
-        private BindingSource bindingSource = new BindingSource();
-
         private int selectedId;
 
         public FormQueryTypes()
@@ -38,7 +38,7 @@ namespace Proyecto1_Citas_Dentales.Forms
 
         private void ButtonAddQueryType_Click(object sender, EventArgs e)
         {
-            if (HandleLists.QueryTypesArray[9] != null)
+            if (Business.queryTypes[9] != null)
             {
                 MessageBox.Show("No se pueden agregar mas tipos de consulta", "Nuevo tipo de consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -53,7 +53,7 @@ namespace Proyecto1_Citas_Dentales.Forms
         {
             dataGridView1.Rows.Clear();
 
-            foreach (QueryType queryType in HandleLists.QueryTypesArray)
+            foreach (QueryType queryType in Business.queryTypes)
             {
                 if (queryType != null)
                 {
@@ -61,7 +61,7 @@ namespace Proyecto1_Citas_Dentales.Forms
                     string state = queryType.State == 'A' ? "Activo" : "Inactivo";
                     string id = queryType.Id.ToString();
                     string description = queryType.Description;
-                    
+
                     string[] row = { id, description, state };
 
                     dataGridView1.Rows.Add(row);
@@ -72,12 +72,10 @@ namespace Proyecto1_Citas_Dentales.Forms
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Verificar que se hizo clic en la tercera columna y que haya al menos una fila seleccionada
-            if (e.RowIndex >= 0 && e.ColumnIndex == 2) 
+            if (e.RowIndex >= 0)
             {
                 // Obtener el valor de la primera columna (columna 0)
                 selectedId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
-
-                // Ahora, tienes el valor de la primera columna de la fila seleccionada en la variable selectedId
             }
             else
             {
@@ -85,30 +83,49 @@ namespace Proyecto1_Citas_Dentales.Forms
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ChangeState(object sender, EventArgs e)
         {
             if (selectedId != 0)
             {
-                for (int i = 0; i < HandleLists.QueryTypesArray.Length; i++)
+                Response res = Business.ChangeStatusQueryType(selectedId);
+
+                if (res.Success)
                 {
-                    if (HandleLists.QueryTypesArray[i] != null && HandleLists.QueryTypesArray[i].Id == selectedId)
-                    {
-                        if (HandleLists.QueryTypesArray[i].State == 'I')
-                        {
-                            HandleLists.QueryTypesArray[i].State = 'A';
-                        }
-                        else
-                        {
-                            HandleLists.QueryTypesArray[i].State = 'I';
-                        }
-                    }
+                    UpdateData();
+                    selectedId = 0;
+                    return;
                 }
-                UpdateData();
-                selectedId = 0;
+                else
+                {
+                    MessageBox.Show(res.Message, "Cambiar estado de tipo de consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                MessageBox.Show("Seleccione una columna de estado a modificar", "Cambiar estado de tipo de consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Seleccione la fila que desea modificar", "Cambiar estado de tipo de consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DeleteQueryType(object sender, EventArgs e)
+        {
+            if (selectedId != 0)
+            {
+                Response res = Business.DeleteQueryType(selectedId);
+
+                if (res.Success)
+                {
+                    UpdateData();
+                    selectedId = 0;
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show(res.Message, "Eliminar tipo de consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione la fila a eliminar", "Eliminar Tipo de consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

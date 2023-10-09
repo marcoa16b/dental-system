@@ -34,8 +34,12 @@
             button1 = new Button();
             label1 = new Label();
             doctorDataViewer = new DataGridView();
+            buttonDeleteDoctor = new Button();
+            buttonChangeState = new Button();
+            panel2 = new Panel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)doctorDataViewer).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -113,12 +117,53 @@
             // 
             doctorDataViewer.BackgroundColor = Color.FromArgb(25, 25, 50);
             doctorDataViewer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            doctorDataViewer.Dock = DockStyle.Top;
-            doctorDataViewer.Location = new Point(0, 70);
+            doctorDataViewer.Dock = DockStyle.Fill;
+            doctorDataViewer.Location = new Point(8, 18);
             doctorDataViewer.Name = "doctorDataViewer";
             doctorDataViewer.RowTemplate.Height = 25;
-            doctorDataViewer.Size = new Size(800, 287);
+            doctorDataViewer.Size = new Size(784, 302);
             doctorDataViewer.TabIndex = 3;
+            doctorDataViewer.CellClick += HandleCellClick;
+            // 
+            // buttonDeleteDoctor
+            // 
+            buttonDeleteDoctor.AutoSize = true;
+            buttonDeleteDoctor.BackColor = Color.FromArgb(192, 0, 0);
+            buttonDeleteDoctor.FlatStyle = FlatStyle.Flat;
+            buttonDeleteDoctor.ForeColor = Color.White;
+            buttonDeleteDoctor.Location = new Point(142, 404);
+            buttonDeleteDoctor.Name = "buttonDeleteDoctor";
+            buttonDeleteDoctor.Padding = new Padding(8, 4, 8, 4);
+            buttonDeleteDoctor.Size = new Size(118, 35);
+            buttonDeleteDoctor.TabIndex = 5;
+            buttonDeleteDoctor.Text = "Eliminar doctor";
+            buttonDeleteDoctor.UseVisualStyleBackColor = false;
+            buttonDeleteDoctor.Click += buttonDeleteDoctor_Click;
+            // 
+            // buttonChangeState
+            // 
+            buttonChangeState.AutoSize = true;
+            buttonChangeState.BackColor = Color.FromArgb(17, 17, 34);
+            buttonChangeState.FlatStyle = FlatStyle.Flat;
+            buttonChangeState.ForeColor = Color.White;
+            buttonChangeState.Location = new Point(8, 404);
+            buttonChangeState.Name = "buttonChangeState";
+            buttonChangeState.Padding = new Padding(8, 4, 8, 4);
+            buttonChangeState.Size = new Size(118, 35);
+            buttonChangeState.TabIndex = 4;
+            buttonChangeState.Text = "Cambiar estado";
+            buttonChangeState.UseVisualStyleBackColor = false;
+            buttonChangeState.Click += buttonChangeState_Click;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(doctorDataViewer);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 70);
+            panel2.Name = "panel2";
+            panel2.Padding = new Padding(8, 18, 8, 0);
+            panel2.Size = new Size(800, 320);
+            panel2.TabIndex = 6;
             // 
             // FormAdminDoctors
             // 
@@ -126,14 +171,18 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(25, 25, 50);
             ClientSize = new Size(800, 450);
-            Controls.Add(doctorDataViewer);
+            Controls.Add(panel2);
+            Controls.Add(buttonDeleteDoctor);
+            Controls.Add(buttonChangeState);
             Controls.Add(panel1);
             Name = "FormAdminDoctors";
             Text = "FormAdminDoctors";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)doctorDataViewer).EndInit();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -144,5 +193,8 @@
         private Label label1;
         private Button buttonNewDoctor;
         private DataGridView doctorDataViewer;
+        private Button buttonDeleteDoctor;
+        private Button buttonChangeState;
+        private Panel panel2;
     }
 }
