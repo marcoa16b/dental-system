@@ -33,7 +33,14 @@
             button2 = new Button();
             button1 = new Button();
             label1 = new Label();
+            label2 = new Label();
+            inputDateSearch = new DateTimePicker();
+            searchButton = new Button();
+            resultsView = new DataGridView();
+            panel2 = new Panel();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)resultsView).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -106,18 +113,82 @@
             label1.TabIndex = 1;
             label1.Text = "Reporte por Fecha";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(12, 80);
+            label2.Name = "label2";
+            label2.Size = new Size(191, 19);
+            label2.TabIndex = 4;
+            label2.Text = "Ingrese una fecha a consultar:";
+            // 
+            // inputDateSearch
+            // 
+            inputDateSearch.CustomFormat = "dd/MM/yyyy";
+            inputDateSearch.Format = DateTimePickerFormat.Custom;
+            inputDateSearch.Location = new Point(12, 102);
+            inputDateSearch.Name = "inputDateSearch";
+            inputDateSearch.Size = new Size(300, 23);
+            inputDateSearch.TabIndex = 5;
+            // 
+            // searchButton
+            // 
+            searchButton.AutoSize = true;
+            searchButton.FlatAppearance.BorderColor = Color.DimGray;
+            searchButton.FlatStyle = FlatStyle.Flat;
+            searchButton.ForeColor = Color.White;
+            searchButton.Location = new Point(328, 100);
+            searchButton.Margin = new Padding(3, 6, 3, 6);
+            searchButton.Name = "searchButton";
+            searchButton.Size = new Size(75, 27);
+            searchButton.TabIndex = 6;
+            searchButton.Text = "Buscar";
+            searchButton.UseVisualStyleBackColor = true;
+            searchButton.Click += searchButton_Click;
+            // 
+            // resultsView
+            // 
+            resultsView.BackgroundColor = Color.FromArgb(25, 25, 50);
+            resultsView.BorderStyle = BorderStyle.None;
+            resultsView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resultsView.Dock = DockStyle.Fill;
+            resultsView.Location = new Point(8, 8);
+            resultsView.Name = "resultsView";
+            resultsView.RowTemplate.Height = 25;
+            resultsView.Size = new Size(784, 299);
+            resultsView.TabIndex = 7;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(resultsView);
+            panel2.Dock = DockStyle.Bottom;
+            panel2.Location = new Point(0, 135);
+            panel2.Name = "panel2";
+            panel2.Padding = new Padding(8);
+            panel2.Size = new Size(800, 315);
+            panel2.TabIndex = 8;
+            // 
             // FormReportDate
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(25, 25, 50);
             ClientSize = new Size(800, 450);
+            Controls.Add(panel2);
+            Controls.Add(searchButton);
+            Controls.Add(inputDateSearch);
+            Controls.Add(label2);
             Controls.Add(panel1);
             Name = "FormReportDate";
             Text = "FormReportDate";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)resultsView).EndInit();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -127,5 +198,10 @@
         private Button button2;
         private Button button1;
         private Label label1;
+        private Label label2;
+        private DateTimePicker inputDateSearch;
+        private Button searchButton;
+        private DataGridView resultsView;
+        private Panel panel2;
     }
 }
