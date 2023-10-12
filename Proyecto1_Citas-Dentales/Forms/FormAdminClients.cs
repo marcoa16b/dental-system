@@ -1,6 +1,5 @@
 ﻿using Entities;
 using BusinessLogic;
-// using Proyecto1_Citas_Dentales.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,16 +11,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.AxHost;
 
+/* UNED: Proyecto III Cuatrimestre
+ * Proyecto #1: Aplicacion para gestionar citas de una clinica dental
+ * Estidiante: Marco Fernando Agüero Barboza
+ * Fecha: 11/10/2023
+ * 
+ * Clase de la interfaz de administracion de clientes
+ */
+
 namespace Proyecto1_Citas_Dentales.Forms
 {
     public partial class FormAdminClients : Form
     {
-        public int selectedId;
-
         public FormAdminClients()
         {
             InitializeComponent();
 
+            // Agregar columnas al DataGridView
             DataGridViewTextBoxColumn columnId = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn columnName = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn columnFLName = new DataGridViewTextBoxColumn();
@@ -46,6 +52,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             UpdateData();
         }
 
+        // Boton para agregar un nuevo cliente
         private void buttonNewClient_Click(object sender, EventArgs e)
         {
             if (Business.clients[19] != null)
@@ -58,6 +65,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             formNewClient.ShowDialog();
         }
 
+        // Actualizar los datos del DataGridView
         public void UpdateData()
         {
             clientDataViewer.Rows.Clear();
@@ -79,20 +87,20 @@ namespace Proyecto1_Citas_Dentales.Forms
             }
         }
 
+        // Seleccionar una fila del DataGridView
         private void HandleSelectId(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                /*selectedId = Convert.ToInt32(clientDataViewer.Rows[e.RowIndex].Cells[0].Value);*/
                 Business.selectedClientId = Convert.ToInt32(clientDataViewer.Rows[e.RowIndex].Cells[0].Value);
             }
             else
             {
-                // selectedId = 0;
                 Business.selectedClientId = 0;
             }
         }
 
+        // Boton para editar un cliente
         private void buttonEditClient_Click(object sender, EventArgs e)
         {
             if (Business.selectedClientId == 0)
@@ -106,6 +114,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             formEditClient.ShowDialog();
         }
 
+        // Boton para eliminar un cliente
         private void buttonDeleteClient_Click(object sender, EventArgs e)
         {
             if (Business.selectedClientId != 0)
@@ -121,21 +130,6 @@ namespace Proyecto1_Citas_Dentales.Forms
                         MessageBox.Show(response.Message, "Eliminar cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
-                
-                
-                /*for (int i = 0; i < Business.clients.Length; i++)
-                {
-                    if (Business.clients[i] != null && Business.clients[i].Id == Business.selectedClientId)
-                    {
-                        if (MessageBox.Show("¿Está seguro de que desea eliminar el cliente?", "Eliminar cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                        {
-                            Business.clients[i] = null;
-                            UpdateData();
-                        }
-                    }
-                }
-                Business.selectedClientId = 0;*/
             }
             else
             {

@@ -2,17 +2,28 @@ using System;
 using System.Windows.Input;
 using Entities;
 
+/* UNED: Proyecto III Cuatrimestre
+ * Proyecto #1: Aplicacion para gestionar citas de una clinica dental
+ * Estidiante: Marco Fernando Agüero Barboza
+ * Fecha: 11/10/2023
+ * 
+ * Clase para administrar la logica de negocio de la aplicacion.
+ */
+
 namespace BusinessLogic
 {
     public static class Business
     {
+        // Variables globales
         public static QueryType[] queryTypes = new QueryType[10];
         public static Client[] clients = new Client[20];
         public static Doctor[] doctors = new Doctor[20];
         public static Appointment[] appointments = new Appointment[20];
 
+        // Variable para almacenar el id del cliente de la fila seleccionada
         public static int selectedClientId;
 
+        // Metodo para guardar un tipo de consulta
         public static Response SaveQueryType(int id, string description, char state)
         {
             Response response = new()
@@ -75,6 +86,7 @@ namespace BusinessLogic
             }
         }
 
+        // Metodo para guardar un cliente
         public static Response SaveClient(string id, string name, string lastName, string secondLastName, DateTime birthday, char gender)
         {
             Response response = new()
@@ -148,7 +160,8 @@ namespace BusinessLogic
                 return response;
             }
         }
-        
+
+        // Metodo para guardar un doctor
         public static Response SaveDoctor(string id, string name, string lastName, string secondLastName, char state)
         {
             Response response = new()
@@ -221,6 +234,7 @@ namespace BusinessLogic
 
         }
 
+        // Metodo para guardar una cita
         public static Response SaveAppointment(string id, DateTime date, string queryTypeData, string clientData, string doctorData)
         {
             Response response = new()
@@ -360,7 +374,11 @@ namespace BusinessLogic
             }
         }
 
+
+
         // ****** TIPOS DE CONSULTA ****** //
+
+
 
         // Actualizar estado de tipo de consulta
         public static Response ChangeStatusQueryType(int id)
@@ -487,7 +505,11 @@ namespace BusinessLogic
             }
         }
 
+
+
         // ****** CLIENTES ****** //
+
+
 
         // Actualizar datos del cliente
         public static Response UpdateClientData(DateTime birthday, char gender)
@@ -556,7 +578,11 @@ namespace BusinessLogic
             };
         }
 
+
+
         // ****** Doctores ****** //
+
+
 
         // Actualizar estado de doctor
         public static Response ChangeStatusDoctor(int id)
@@ -570,7 +596,7 @@ namespace BusinessLogic
             {
                 if (id <= 0)
                 {
-                    throw new ArgumentException("El ID de consulta debe ser un número positivo mayor que cero.");
+                    throw new ArgumentException("Seleccione la fila a modificar");
                 }
 
                 for (int i = 0; i < doctors.Length; i++)
@@ -622,7 +648,7 @@ namespace BusinessLogic
             {
                 if (id <= 0)
                 {
-                    throw new ArgumentException("El ID de consulta debe ser un número positivo mayor que cero.");
+                    throw new ArgumentException("Seleccione la fila a eliminar.");
                 }
 
                 for (int i = 0; i < doctors.Length; i++)
@@ -655,7 +681,10 @@ namespace BusinessLogic
         }
 
 
+
         // ****** Citas ****** //
+
+
 
         // Eliminar cita
         public static Response DeleteAppointment(int id)

@@ -9,6 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/* UNED: Proyecto III Cuatrimestre
+ * Proyecto #1: Aplicacion para gestionar citas de una clinica dental
+ * Estidiante: Marco Fernando Agüero Barboza
+ * Fecha: 11/10/2023
+ * 
+ * Clase de formulario para agregar un nuevo cliente
+ */
+
 namespace Proyecto1_Citas_Dentales.Forms
 {
     public partial class FormNewClient : Form
@@ -20,6 +28,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             inputBirthday.Value = DateTime.Parse("01/01/2000");
         }
 
+        // Boton para guardar un nuevo cliente
         private void buttonSaveClient_Click(object sender, EventArgs e)
         {
             char gndr = inputGender.Text[0];

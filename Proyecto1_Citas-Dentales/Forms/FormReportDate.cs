@@ -10,6 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/* UNED: Proyecto III Cuatrimestre
+ * Proyecto #1: Aplicacion para gestionar citas de una clinica dental
+ * Estidiante: Marco Fernando Agüero Barboza
+ * Fecha: 11/10/2023
+ * 
+ * Clase de la interfaz grafica para generar un reporte de citas por fecha
+ */
+
 namespace Proyecto1_Citas_Dentales.Forms
 {
     public partial class FormReportDate : Form
@@ -18,6 +26,7 @@ namespace Proyecto1_Citas_Dentales.Forms
         {
             InitializeComponent();
 
+            // Crear las columnas del DataGridView
             DataGridViewTextBoxColumn columnId = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn columnDate = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn columnType = new DataGridViewTextBoxColumn();
@@ -37,14 +46,13 @@ namespace Proyecto1_Citas_Dentales.Forms
             resultsView.Columns.Add(columnClient);
         }
 
+        // Boton para generar el reporte
         private void searchButton_Click(object sender, EventArgs e)
         {
-            // Limpiar el DataGridView
             resultsView.Rows.Clear();
 
             DateTime date = inputDateSearch.Value;
 
-            // Buscar las citas que coincidan con la fecha
             for (int i = 0; i < Business.appointments.Length; i++)
             {
                 if (Business.appointments[i] != null)

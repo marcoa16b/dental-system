@@ -1,12 +1,19 @@
-//using Proyecto1_Citas_Dentales.Classes;
 using System.ComponentModel;
+
+/* UNED: Proyecto III Cuatrimestre
+ * Proyecto #1: Aplicacion para gestionar citas de una clinica dental
+ * Estidiante: Marco Fernando Agüero Barboza
+ * Fecha: 11/10/2023
+ * 
+ * Esta es la clase del formulario principal de la aplicacion.
+ */
 
 namespace Proyecto1_Citas_Dentales
 {
     public partial class FormMainMenu : Form
     {
 
-        // Fields
+        // variables para manejar los botones y los formularios
         private Button currentButton;
         private Form activeForm;
 
@@ -37,7 +44,7 @@ namespace Proyecto1_Citas_Dentales
             }
         }
 
-        // Dar formato por defecto a los botones
+        // Dar formato por defecto a todos los botones
         private void DisableButton()
         {
             foreach (Control previousBtn in panelSideMenu.Controls)
@@ -52,7 +59,7 @@ namespace Proyecto1_Citas_Dentales
             }
         }
 
-        // open a child form
+        // abrir el formulario seleccionado
         private void OpenChildForm(Form childForm, object btnSender)
         {
             if (activeForm != null)
@@ -74,7 +81,7 @@ namespace Proyecto1_Citas_Dentales
         }
 
 
-        // handlers para los clicks en botones
+        // Eventos de los botones del side menu
         private void buttonNewDates_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormAppointments(), sender);
@@ -110,6 +117,7 @@ namespace Proyecto1_Citas_Dentales
             OpenChildForm(new Forms.FormReportDoctor(), sender);
         }
 
+        // Cerrar formulario activo para regresar el principal
         private void label1_Click(object sender, EventArgs e)
         {
             if (activeForm != null)

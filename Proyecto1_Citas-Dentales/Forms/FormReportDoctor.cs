@@ -10,6 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/* UNED: Proyecto III Cuatrimestre
+ * Proyecto #1: Aplicacion para gestionar citas de una clinica dental
+ * Estidiante: Marco Fernando Agüero Barboza
+ * Fecha: 11/10/2023
+ * 
+ * Clase de la interfaz grafica para generar un reporte de citas por doctor
+ */
+
 namespace Proyecto1_Citas_Dentales.Forms
 {
     public partial class FormReportDoctor : Form
@@ -18,6 +26,7 @@ namespace Proyecto1_Citas_Dentales.Forms
         {
             InitializeComponent();
 
+            // Crear las columnas del DataGridView
             DataGridViewTextBoxColumn columnId = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn columnDate = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn columnType = new DataGridViewTextBoxColumn();
@@ -48,16 +57,21 @@ namespace Proyecto1_Citas_Dentales.Forms
             }
         }
 
+        // Boton para generar el reporte
         private void searchButton_Click(object sender, EventArgs e)
         {
-            // Limpiar el DataGridView
             resultsView.Rows.Clear();
 
             string doctorInput = inputDoctors.Text;
             string[] doctorData = doctorInput.Split('-');
-            int doctorId = int.Parse(doctorData[0]);
+            int doctorId;
 
-            // Buscar las citas que coincidan con el doctor
+            if (int.TryParse(doctorData[0], out doctorId) == false)
+            {
+                MessageBox.Show("Seleccione un doctor.", "Reporte doctores", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             for (int i = 0; i < Business.appointments.Length; i++)
             {
                 if (Business.appointments[i] != null)

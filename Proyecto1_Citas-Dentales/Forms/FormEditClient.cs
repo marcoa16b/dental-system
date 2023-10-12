@@ -1,6 +1,4 @@
 ﻿using BusinessLogic;
-using Entities;
-// using Proyecto1_Citas_Dentales.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/* UNED: Proyecto III Cuatrimestre
+ * Proyecto #1: Aplicacion para gestionar citas de una clinica dental
+ * Estidiante: Marco Fernando Agüero Barboza
+ * Fecha: 11/10/2023
+ * 
+ * Clase de la interfaz de edicion de clientes
+ */
+
 namespace Proyecto1_Citas_Dentales.Forms
 {
     public partial class FormEditClient : Form
@@ -20,9 +26,9 @@ namespace Proyecto1_Citas_Dentales.Forms
         {
             InitializeComponent();
 
+            // Cargar los datos del cliente seleccionado
             for (int i = 0; i < Business.clients.Length; i++)
             {
-                // verifica que el cliente exista
                 if (Business.clients[i] != null && Business.clients[i].Id == Business.selectedClientId)
                 {
                     inputId.Text = Business.clients[i].Id.ToString();
@@ -46,6 +52,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             }
         }
 
+        // Boton para guardar los cambios y cerrar la ventana
         private void buttonSaveClient_Click(object sender, EventArgs e)
         {
             Response res = Business.UpdateClientData(inputBirthday.Value, inputGender.Text[0]);

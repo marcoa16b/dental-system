@@ -10,16 +10,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/* UNED: Proyecto III Cuatrimestre
+ * Proyecto #1: Aplicacion para gestionar citas de una clinica dental
+ * Estidiante: Marco Fernando Agüero Barboza
+ * Fecha: 11/10/2023
+ * 
+ * Clase de la interfaz de administracion de doctores
+ */
+
 namespace Proyecto1_Citas_Dentales.Forms
 {
     public partial class FormAdminDoctors : Form
     {
+        // variable para guardar el id del doctor seleccionado
         private int selectedId;
 
         public FormAdminDoctors()
         {
             InitializeComponent();
 
+            // Agregar columnas al DataGridView
             DataGridViewTextBoxColumn columnId = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn columnName = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn columnFLName = new DataGridViewTextBoxColumn();
@@ -41,6 +51,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             UpdateData();
         }
 
+        // Actualiza los datos del DataGridView
         public void UpdateData()
         {
             doctorDataViewer.Rows.Clear();
@@ -63,6 +74,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             }
         }
 
+        // Boton para agregar un nuevo doctor
         private void buttonNewDoctor_Click(object sender, EventArgs e)
         {
             if (Business.doctors[19] != null)
@@ -74,6 +86,8 @@ namespace Proyecto1_Citas_Dentales.Forms
             formNewDoctor.Owner = this;
             formNewDoctor.ShowDialog();
         }
+
+        // Seleccionar un doctor del DataGridView
         private void HandleCellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -86,6 +100,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             }
         }
 
+        // Boton para editar un doctor
         private void buttonChangeState_Click(object sender, EventArgs e)
         {
             Response response = Business.ChangeStatusDoctor(selectedId);
@@ -99,6 +114,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             }
         }
 
+        // Boton para eliminar un doctor
         private void buttonDeleteDoctor_Click(object sender, EventArgs e)
         {
             Response response = Business.DeleteDoctor(selectedId);

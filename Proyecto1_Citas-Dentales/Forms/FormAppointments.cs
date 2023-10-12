@@ -1,5 +1,4 @@
-﻿// using Proyecto1_Citas_Dentales.Classes;
-using Entities;
+﻿using Entities;
 using BusinessLogic;
 using System;
 using System.Collections.Generic;
@@ -11,16 +10,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/* UNED: Proyecto III Cuatrimestre
+ * Proyecto #1: Aplicacion para gestionar citas de una clinica dental
+ * Estidiante: Marco Fernando Agüero Barboza
+ * Fecha: 11/10/2023
+ * 
+ * Clase de la interfaz de administracion de citas
+ */
+
 namespace Proyecto1_Citas_Dentales.Forms
 {
     public partial class FormAppointments : Form
     {
+        // Variable para guardar el id de la fila seleccionada
         private int selectedId;
 
         public FormAppointments()
         {
             InitializeComponent();
 
+            // Agregar columnas al DataGridView
             DataGridViewTextBoxColumn columnId = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn columnDate = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn columnType = new DataGridViewTextBoxColumn();
@@ -42,6 +51,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             UpdateData();
         }
 
+        // Actualizar datos del DataGridView
         public void UpdateData()
         {
             appointmentsView.Rows.Clear();
@@ -69,6 +79,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             }
         }
 
+        // Boton para crear una nueva cita
         private void HandleNewAppoiment(object sender, EventArgs e)
         {
             // Variables para saber si existe el cliente, doctor y tipo de consulta
@@ -123,6 +134,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             formNewAppointment.ShowDialog();
         }
 
+        // Seleccionar una cita
         private void HandleClickCell(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -135,8 +147,14 @@ namespace Proyecto1_Citas_Dentales.Forms
             }
         }
 
+        // Boton para eliminar una cita
         private void DeleteAppointment(object sender, EventArgs e)
         {
+            if (selectedId <= 0)
+            {
+                MessageBox.Show("Seleccione la fila a eliminar", "Eliminar cita", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (MessageBox.Show("¿Está seguro que desea eliminar la cita?", "Eliminar cita", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Response response = Business.DeleteAppointment(selectedId);

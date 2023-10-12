@@ -1,5 +1,4 @@
 ﻿using BusinessLogic;
-// using Proyecto1_Citas_Dentales.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+/* UNED: Proyecto III Cuatrimestre
+ * Proyecto #1: Aplicacion para gestionar citas de una clinica dental
+ * Estidiante: Marco Fernando Agüero Barboza
+ * Fecha: 11/10/2023
+ * 
+ * Clase de formulario para agregar un nuevo tipo de consulta
+ */
 
 namespace Proyecto1_Citas_Dentales.Forms
 {
@@ -20,6 +27,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             InitializeComponent();
         }
 
+        // Boton para agregar un nuevo tipo de consulta
         private void ButtonAddQueryType_Click(object sender, EventArgs e)
         {
             Response res = Business.SaveQueryType((int)idQueryType.Value, descriptionQueryType.Text, stateQueryType.Text[0]);

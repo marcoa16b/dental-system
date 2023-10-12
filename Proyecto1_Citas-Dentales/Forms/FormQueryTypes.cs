@@ -1,6 +1,5 @@
 ﻿using BusinessLogic;
 using Entities;
-// using Proyecto1_Citas_Dentales.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+/* UNED: Proyecto III Cuatrimestre
+ * Proyecto #1: Aplicacion para gestionar citas de una clinica dental
+ * Estidiante: Marco Fernando Agüero Barboza
+ * Fecha: 11/10/2023
+ * 
+ * Clase de formulario para gestionar los tipos de consulta
+ */
 
 namespace Proyecto1_Citas_Dentales.Forms
 {
@@ -21,6 +28,7 @@ namespace Proyecto1_Citas_Dentales.Forms
         {
             InitializeComponent();
 
+            // Agrega las columnas al DataGridView
             DataGridViewTextBoxColumn columnId = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn columnDescription = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn columnState = new DataGridViewTextBoxColumn();
@@ -36,6 +44,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             UpdateData();
         }
 
+        // Boton para agregar un nuevo tipo de consulta
         private void ButtonAddQueryType_Click(object sender, EventArgs e)
         {
             if (Business.queryTypes[9] != null)
@@ -49,6 +58,7 @@ namespace Proyecto1_Citas_Dentales.Forms
 
         }
 
+        // Actualiza los datos del DataGridView
         public void UpdateData()
         {
             dataGridView1.Rows.Clear();
@@ -69,6 +79,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             }
         }
 
+        // Selecciona el ID de la fila seleccionada
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Verificar que se hizo clic en la tercera columna y que haya al menos una fila seleccionada
@@ -83,6 +94,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             }
         }
 
+        // Boton para modificar el estado de un tipo de consulta
         private void ChangeState(object sender, EventArgs e)
         {
             if (selectedId != 0)
@@ -106,6 +118,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             }
         }
 
+        // Boton para eliminar un tipo de consulta
         private void DeleteQueryType(object sender, EventArgs e)
         {
             if (selectedId != 0)

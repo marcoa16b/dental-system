@@ -1,5 +1,4 @@
-﻿// using Proyecto1_Citas_Dentales.Classes;
-using BusinessLogic;
+﻿using BusinessLogic;
 using Entities;
 using System;
 using System.Collections.Generic;
@@ -11,6 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/* UNED: Proyecto III Cuatrimestre
+ * Proyecto #1: Aplicacion para gestionar citas de una clinica dental
+ * Estidiante: Marco Fernando Agüero Barboza
+ * Fecha: 11/10/2023
+ * 
+ * Clase de la interfaz de creacion de citas
+ */
+
 namespace Proyecto1_Citas_Dentales.Forms
 {
     public partial class FormNewAppointment : Form
@@ -20,6 +27,7 @@ namespace Proyecto1_Citas_Dentales.Forms
         {
             InitializeComponent();
 
+            // Cargar datos en los combobox
             foreach (QueryType qt in Business.queryTypes)
             {
                 if (qt != null && qt.State == 'A')
@@ -62,6 +70,7 @@ namespace Proyecto1_Citas_Dentales.Forms
 
         }
 
+        // Boton para guardar la cita
         private void buttonSaveAppointment_Click(object sender, EventArgs e)
         {
             Response response = Business.SaveAppointment(inputID.Text, inputDate.Value, inputType.Text, inputClient.Text, inputDoctor.Text);

@@ -10,6 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/* UNED: Proyecto III Cuatrimestre
+ * Proyecto #1: Aplicacion para gestionar citas de una clinica dental
+ * Estidiante: Marco Fernando Agüero Barboza
+ * Fecha: 11/10/2023
+ * 
+ * Clase de formulario para generar el reporte de citas por cliente
+ */
+
 namespace Proyecto1_Citas_Dentales.Forms
 {
     public partial class FormReportClient : Form
@@ -18,6 +26,7 @@ namespace Proyecto1_Citas_Dentales.Forms
         {
             InitializeComponent();
 
+            // Crear las columnas del DataGridView
             DataGridViewTextBoxColumn columnId = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn columnDate = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn columnType = new DataGridViewTextBoxColumn();
@@ -48,14 +57,19 @@ namespace Proyecto1_Citas_Dentales.Forms
             }
         }
 
+        // Boton para generar el reporte
         private void searchButton_Click(object sender, EventArgs e)
         {
-            // Limpiar el DataGridView
             resultsView.Rows.Clear();
 
             string clientInput = inputClients.Text;
             string[] clientData = clientInput.Split('-');
-            int clientId = int.Parse(clientData[0]);
+            int clientId;
+            if (int.TryParse(clientData[0], out clientId) == false)
+            {
+                MessageBox.Show("Seleccione un cliente.", "Reporte clientes", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             // Buscar las citas que coincidan con el cliente
             for (int i = 0; i < Business.appointments.Length; i++)
