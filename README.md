@@ -1,5 +1,7 @@
 # Desarrollo del Sistema de Administración de Citas Dentales
 
+![Imagen presentacion](image.png)
+
 ## Resumen
 
 Este repositorio contiene un proyecto desarrollado en C# utilizando Visual Studio Community 2022, con el objetivo de crear una herramienta de escritorio para la administración de citas de dentistas. El sistema permite gestionar clientes, doctores y citas asignadas a través de una interfaz gráfica de usuario. A continuación, se detallan las funcionalidades principales del sistema:
