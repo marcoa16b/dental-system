@@ -120,6 +120,7 @@
             doctorDataViewer.Dock = DockStyle.Fill;
             doctorDataViewer.Location = new Point(8, 18);
             doctorDataViewer.Name = "doctorDataViewer";
+            doctorDataViewer.ReadOnly = true;
             doctorDataViewer.RowTemplate.Height = 25;
             doctorDataViewer.Size = new Size(784, 302);
             doctorDataViewer.TabIndex = 3;

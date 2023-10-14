@@ -30,7 +30,8 @@ namespace Proyecto1_Citas_Dentales.Forms
         // Boton para agregar un nuevo tipo de consulta
         private void ButtonAddQueryType_Click(object sender, EventArgs e)
         {
-            Response res = Business.SaveQueryType((int)idQueryType.Value, descriptionQueryType.Text, stateQueryType.Text[0]);
+            char state = stateQueryType.Text.Length > 0 ? stateQueryType.Text[0] : 'N';
+            Response res = Business.SaveQueryType((int)idQueryType.Value, descriptionQueryType.Text, state);
 
             if (res.Success)
             {

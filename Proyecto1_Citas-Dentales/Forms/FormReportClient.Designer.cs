@@ -155,6 +155,7 @@
             resultsView.Dock = DockStyle.Fill;
             resultsView.Location = new Point(8, 8);
             resultsView.Name = "resultsView";
+            resultsView.ReadOnly = true;
             resultsView.RowTemplate.Height = 25;
             resultsView.Size = new Size(784, 299);
             resultsView.TabIndex = 7;

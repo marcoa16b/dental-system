@@ -123,17 +123,20 @@ namespace Proyecto1_Citas_Dentales.Forms
         {
             if (selectedId != 0)
             {
-                Response res = Business.DeleteQueryType(selectedId);
+                if (MessageBox.Show("¿Está seguro de que desea eliminar el tipo de consulta?", "Eliminar tipo de consulta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    Response res = Business.DeleteQueryType(selectedId);
 
-                if (res.Success)
-                {
-                    UpdateData();
-                    selectedId = 0;
-                    return;
-                }
-                else
-                {
-                    MessageBox.Show(res.Message, "Eliminar tipo de consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (res.Success)
+                    {
+                        UpdateData();
+                        selectedId = 0;
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show(res.Message, "Eliminar tipo de consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else

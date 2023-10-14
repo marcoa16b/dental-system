@@ -83,6 +83,7 @@
             appointmentsView.Dock = DockStyle.Top;
             appointmentsView.Location = new Point(0, 70);
             appointmentsView.Name = "appointmentsView";
+            appointmentsView.ReadOnly = true;
             appointmentsView.RowTemplate.Height = 25;
             appointmentsView.Size = new Size(800, 276);
             appointmentsView.TabIndex = 1;

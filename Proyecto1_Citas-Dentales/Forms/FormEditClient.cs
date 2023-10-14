@@ -55,7 +55,8 @@ namespace Proyecto1_Citas_Dentales.Forms
         // Boton para guardar los cambios y cerrar la ventana
         private void buttonSaveClient_Click(object sender, EventArgs e)
         {
-            Response res = Business.UpdateClientData(inputBirthday.Value, inputGender.Text[0]);
+            char state = inputGender.Text.Length > 0 ? inputGender.Text[0] : 'N';
+            Response res = Business.UpdateClientData(inputBirthday.Value, state);
 
             if (res.Success)
             {

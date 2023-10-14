@@ -107,6 +107,7 @@ namespace Proyecto1_Citas_Dentales.Forms
             if (response.Success)
             {
                 UpdateData();
+                selectedId = 0;
             }
             else
             {
@@ -117,14 +118,23 @@ namespace Proyecto1_Citas_Dentales.Forms
         // Boton para eliminar un doctor
         private void buttonDeleteDoctor_Click(object sender, EventArgs e)
         {
-            Response response = Business.DeleteDoctor(selectedId);
-            if (response.Success)
+            if (selectedId == 0)
             {
-                UpdateData();
+                MessageBox.Show("Seleccione la fila a eliminar", "Eliminar Doctor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
+            if (MessageBox.Show("¿Está seguro de que desea eliminar el doctor?", "Eliminar doctor", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                MessageBox.Show(response.Message, "Eliminar Doctor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Response response = Business.DeleteDoctor(selectedId);
+                if (response.Success)
+                {
+                    UpdateData();
+                    selectedId = 0;
+                }
+                else
+                {
+                    MessageBox.Show(response.Message, "Eliminar Doctor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

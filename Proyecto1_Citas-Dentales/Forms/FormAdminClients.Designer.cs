@@ -101,6 +101,7 @@
             clientDataViewer.Dock = DockStyle.Top;
             clientDataViewer.Location = new Point(0, 70);
             clientDataViewer.Name = "clientDataViewer";
+            clientDataViewer.ReadOnly = true;
             clientDataViewer.RowTemplate.Height = 25;
             clientDataViewer.Size = new Size(800, 327);
             clientDataViewer.TabIndex = 2;

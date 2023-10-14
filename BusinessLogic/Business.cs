@@ -44,7 +44,7 @@ namespace BusinessLogic
                 }
                 if (state != 'A' && state != 'I')
                 {
-                    throw new ArgumentException("El estado de consulta debe ser 'A' o 'I'.");
+                    throw new ArgumentException("El estado de consulta debe ser 'Activo' o 'Inactivo'.");
                 }
 
                 // Verificar que el ID no exista en la lista
@@ -324,19 +324,20 @@ namespace BusinessLogic
                 }
 
                 // Validar que el cliente no tenga otra cita en la misma fecha y hora con el mismo doctor
-                TimeSpan margen = TimeSpan.FromHours(1);
+                TimeSpan margen = TimeSpan.FromMinutes(59);
                 DateTime fechaHoraSeleccionada = date;
+
                 for (int i = 0; i < appointments.Length; i++)
                 {
                     if (appointments[i] != null && appointments[i].Client.Id == clientId && appointments[i].Doctor.Id == doctorId)
                     {
-                        // Calcular la diferencia entre la fecha y hora seleccionada y la cita existente
+                        // Calcular la diferencia en minutos entre la fecha y hora seleccionada y la cita existente
                         TimeSpan diferencia = fechaHoraSeleccionada - appointments[i].Date;
 
-                        // Si la diferencia en el tiempo absoluto es menor o igual al margen, lanza una excepción
-                        if (Math.Abs(diferencia.TotalHours) < margen.TotalHours)
+                        // Si la diferencia en minutos absolutos es menor o igual al margen, lanza una excepción
+                        if (Math.Abs(diferencia.TotalMinutes) <= margen.TotalMinutes)
                         {
-                            throw new InvalidOperationException("El cliente ya tiene una cita con el mismo doctor en un rango de 1 hora de diferencia.");
+                            throw new InvalidOperationException("El cliente ya tiene una cita con el mismo doctor en un rango de 59 minutos de diferencia.");
                         }
                     }
                 }
@@ -463,27 +464,21 @@ namespace BusinessLogic
 
                 // Verificar que exista el tipo de consulta
                 bool queryTypeExists = false;
-                QueryType? queryType = null;
+                // QueryType? queryType = null;
                 for (int i = 0; i < queryTypes.Length; i++)
                 {
                     if (queryTypes[i] != null && queryTypes[i].Id == id)
                     {
+                        // Eliminar el tipo de consulta
                         queryTypeExists = true;
-                        queryType = queryTypes[i];
-                        break;
+                        queryTypes[i] = null;
+                        response.Success = true;
+                        return response;
                     }
                 }
                 if (!queryTypeExists)
                 {
                     throw new InvalidOperationException("El tipo de consulta no existe.");
-                }
-
-                // Eliminar el tipo de consulta
-                if (queryType != null)
-                {
-                    queryType = null;
-                    response.Success = true;
-                    return response;
                 }
 
                 throw new InvalidOperationException("No se pudo eliminar el tipo de consulta.");

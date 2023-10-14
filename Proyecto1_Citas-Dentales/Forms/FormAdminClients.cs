@@ -108,7 +108,7 @@ namespace Proyecto1_Citas_Dentales.Forms
                 MessageBox.Show("Seleccione la fila a editar", "Editar cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
+
             FormEditClient formEditClient = new FormEditClient();
             formEditClient.Owner = this;
             formEditClient.ShowDialog();
@@ -126,7 +126,8 @@ namespace Proyecto1_Citas_Dentales.Forms
                     {
                         UpdateData();
                     }
-                    else {
+                    else
+                    {
                         MessageBox.Show(response.Message, "Eliminar cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
